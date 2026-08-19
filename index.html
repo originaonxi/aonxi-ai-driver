@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Driver — You Say the Outcome. It Does the Work.</title>
+<meta name="description" content="AI Driver runs your ads, sales outreach, reviews and local listings for you. You approve. It works 24/7 across 105 business tools with one system." />
+<style>
+  :root{
+    --bg:#0a0b12; --bg2:#11131f; --card:#161927; --line:#242838;
+    --ink:#f4f6fb; --muted:#a5adc4; --faint:#6f7690;
+    --brand:#6c8cff; --brand2:#22d3a6; --gold:#ffd166; --danger:#ff6b6b;
+    --grad:linear-gradient(120deg,#6c8cff,#22d3a6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:0;transition:.2s}
+  .btn-main{background:var(--grad);color:#04110d}
+  .btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(34,211,166,.25)}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--brand)}
+  .eyebrow{color:var(--brand2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  section{padding:74px 0;border-bottom:1px solid var(--line)}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+  h1{font-size:clamp(34px,6vw,60px);font-weight:800}
+  h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:14px}
+  h3{font-size:20px;font-weight:700}
+  p.lead{font-size:clamp(17px,2.2vw,21px);color:var(--muted)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,11,18,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto}
+  .logo{font-weight:800;font-size:18px}
+  .logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:14px}
+  .nav-links a:hover{color:var(--ink)}
+  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{padding:90px 0 80px;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(108,140,255,.18),transparent)}
+  .hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lead{max-width:720px;margin:20px auto 0}
+  .hero-cta{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;color:var(--muted)}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .card .num{font-size:13px;font-weight:800;color:var(--brand2)}
+  .card h3{margin:8px 0}
+  .card p{color:var(--muted);font-size:15px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+  @media(max-width:820px){.split{grid-template-columns:1fr}}
+  .oldnew{border-radius:16px;padding:22px;border:1px solid var(--line)}
+  .old{background:rgba(255,107,107,.06)}
+  .new{background:rgba(34,211,166,.07)}
+  .oldnew h3{margin-bottom:10px}
+  .oldnew li{list-style:none;color:var(--muted);padding:6px 0 6px 26px;position:relative}
+  .old li::before{content:"✕";position:absolute;left:0;color:var(--danger)}
+  .new li::before{content:"✓";position:absolute;left:0;color:var(--brand2)}
+
+  .diagram{background:#fff;border-radius:16px;padding:18px;border:1px solid var(--line);overflow:auto}
+  .diagram .mermaid{display:flex;justify-content:center}
+  figcaption{color:var(--faint);font-size:13px;text-align:center;margin-top:10px}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:12px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+  th{background:var(--bg2);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+  td strong{color:var(--ink)}
+  .tag{font-size:12px;color:var(--brand2)}
+
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.price{grid-template-columns:1fr}}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center;position:relative}
+  .plan.pop{border-color:var(--brand2);box-shadow:0 0 0 1px var(--brand2),0 20px 50px rgba(34,211,166,.14)}
+  .plan .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#04110d;font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px}
+  .plan .amt{font-size:40px;font-weight:800;margin:10px 0 2px}
+  .plan .amt span{font-size:15px;color:var(--faint);font-weight:600}
+  .plan ul{list-style:none;margin:18px 0;text-align:left}
+  .plan li{color:var(--muted);padding:7px 0 7px 24px;position:relative;font-size:14px}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--brand2)}
+
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px}
+  .faq summary{cursor:pointer;font-weight:700;font-size:16px}
+  .faq p{color:var(--muted);margin-top:10px}
+
+  footer{padding:50px 0;text-align:center;color:var(--faint);font-size:14px}
+  .center{text-align:center}
+  .mt{margin-top:26px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav">
+    <div class="logo">AI <b>Driver</b></div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#flip">The flip</a>
+      <a href="#tools">105 tools</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn btn-main" href="#pricing">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">The AI that does the work — not just the talking</div>
+    <h1 class="mt">You say the <span>outcome.</span><br/>It does the work.</h1>
+    <p class="lead">AI Driver runs your Google &amp; Facebook ads, sales outreach, reviews, and local listings for you — around the clock. You just approve the important stuff. Think of it as an employee that never sleeps and already knows 105 business tools.</p>
+    <div class="hero-cta">
+      <a class="btn btn-main" href="#pricing">Start today →</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+    <div class="chips">
+      <div class="chip">📈 More leads &amp; calls</div>
+      <div class="chip">⭐ More 5-star reviews</div>
+      <div class="chip">📍 Top of Google Maps</div>
+      <div class="chip">💸 Lower ad costs</div>
+      <div class="chip">🤖 Works 24/7</div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap center">
+    <div class="eyebrow">Sound familiar?</div>
+    <h2 class="mt">Running a business today means juggling 20 apps</h2>
+    <p class="lead" style="max-width:760px;margin:0 auto">Google Business Profile. Yelp. Facebook ads. Follow-up emails. Reviews. A CRM you barely use. It’s too much for one person — and hiring a team is expensive. <strong style="color:var(--ink)">What if one AI just… did all of it?</strong></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Dead simple</div><h2 class="mt">How it works — in 3 steps</h2></div>
+    <div class="grid g3 mt">
+      <div class="card"><div class="num">STEP 1</div><h3>Tell it the goal</h3><p>“Get me 20 more calls this month.” “Fill my calendar.” “Get more 5-star reviews.” Plain English. No setup headaches.</p></div>
+      <div class="card"><div class="num">STEP 2</div><h3>It does the work</h3><p>The AI picks the right tools, writes the messages, runs the ads, updates your listings, and follows up — automatically, all day.</p></div>
+      <div class="card"><div class="num">STEP 3</div><h3>You just approve</h3><p>Anything that spends money or messages a real customer waits for your one-tap “yes.” You stay in control; the AI does the grind.</p></div>
+    </div>
+    <figure class="diagram mt">
+      <div class="mermaid">
+%%{init:{'look':'handDrawn','theme':'neutral'}}%%
+flowchart LR
+  A["🎯 You say the goal<br/>(more calls, more reviews)"] --> B{{"🤖 AI Driver<br/>does the work"}}
+  B --> C["🧑 You approve<br/>the important stuff"]
+  C --> B
+  B --> D["✅ Result delivered<br/>+ simple report"]
+      </div>
+      <figcaption>You set the destination. The AI drives. You’re the co-pilot.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- THE FLIP -->
+<section id="flip">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">The big idea</div><h2 class="mt">Everyone else gives you a “co-pilot.” We give you a Driver.</h2>
+    <p class="lead" style="max-width:720px;margin:6px auto 0">A co-pilot still makes <em>you</em> do all the work. A Driver does the work and lets <em>you</em> supervise. That’s the flip.</p></div>
+    <div class="split mt">
+      <div class="oldnew old">
+        <h3>❌ Normal AI tools</h3>
+        <ul>
+          <li>You still write every message</li>
+          <li>You still run every ad</li>
+          <li>You learn 20 dashboards</li>
+          <li>AI only “suggests” — you do it</li>
+        </ul>
+      </div>
+      <div class="oldnew new">
+        <h3>✅ AI Driver</h3>
+        <ul>
+          <li>It writes and sends for you</li>
+          <li>It runs and optimizes the ads</li>
+          <li>It knows all the tools already</li>
+          <li>You just approve — it does it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT CAN DO -->
+<section id="drivers">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">One system, many jobs</div><h2 class="mt">Point it at any goal</h2></div>
+    <div class="grid g3 mt">
+      <div class="card"><h3>📈 Ads Driver</h3><p>Runs Google &amp; Facebook ads, tests creatives, and cuts wasted spend so your cost per lead drops.</p></div>
+      <div class="card"><h3>📍 Local Driver</h3><p>Owns your Google Maps, Apple Maps, Yelp &amp; Bing listings and pushes you up the local rankings.</p></div>
+      <div class="card"><h3>⭐ Reviews Driver</h3><p>Asks happy customers for reviews, replies to all of them, and protects your reputation.</p></div>
+      <div class="card"><h3>📬 Sales Driver</h3><p>Finds the right prospects, writes personal outreach, follows up, and books meetings for you.</p></div>
+      <div class="card"><h3>📞 Follow-up Driver</h3><p>Texts and emails new leads in seconds so you never lose a customer to slow response.</p></div>
+      <div class="card"><h3>📊 Forecast Driver</h3><p>Turns your numbers into plain-English forecasts so you know what next month looks like.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE (layman) -->
+<section id="architecture">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Under the hood — in plain English</div><h2 class="mt">How the AI actually gets it done</h2>
+    <p class="lead" style="max-width:720px;margin:6px auto 0">You don’t need to understand this to use it. But here’s the honest picture: the AI thinks, does, checks its own work, and asks you before anything risky.</p></div>
+    <figure class="diagram mt">
+      <div class="mermaid">
+%%{init:{'look':'handDrawn','theme':'neutral'}}%%
+flowchart TD
+  S(["🎯 Your goal"]) --> P["1. Make a plan"]
+  P --> A["2. Do the work<br/>(ads, emails, listings…)"]
+  A --> V["3. Check: did it help?"]
+  V --> G{"Risky? Spends money?<br/>Messages a customer?"}
+  G -- "yes" --> H["🧑 Ask you to approve"]
+  H --> A
+  G -- "no" --> K["Keep going"]
+  K --> M["4. Measure &amp; report"]
+  M --> L{"Goal reached?"}
+  L -- "not yet" --> P
+  L -- "yes" --> DONE(["✅ Done — with proof"])
+      </div>
+      <figcaption>Plan → Do → Check → Approve → Repeat. It never stops until the goal is met.</figcaption>
+    </figure>
+    <p class="center mt"><a class="btn btn-ghost" href="./flowchart.md">See the full architecture (for the techies) →</a></p>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">The unfair advantage</div><h2 class="mt">One Driver. 105 business tools. Zero learning curve.</h2>
+    <p class="lead" style="max-width:760px;margin:6px auto 0">Instead of you buying and learning tools, the AI already knows them — from free tools every business needs, to the expensive platforms the big players use. It picks the right one for your goal and budget.</p></div>
+
+    <figure class="diagram mt">
+      <div class="mermaid">
+%%{init:{'look':'handDrawn','theme':'neutral'}}%%
+flowchart TB
+  D{{"🤖 AI Driver Orchestrator"}}
+  D --> L["📍 Local<br/>Google · Apple · Yelp · Bing"]
+  D --> A["📈 Ads<br/>Google · Meta · TikTok"]
+  D --> S["📬 Sales<br/>Clay · Apollo · 6sense"]
+  D --> R["⭐ Reviews<br/>Birdeye · Podium"]
+  D --> V["🎙️ Voice<br/>ElevenLabs · Fish Audio"]
+  D --> F["📊 Reports<br/>Sheets · Looker · AI"]
+      </div>
+      <figcaption>You don’t choose the tool. The Driver does — then reports back one number: did it work?</figcaption>
+    </figure>
+
+    <div class="mt">
+      <table>
+        <thead><tr><th>Price band</th><th>Examples</th><th>What it’s for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Free foundation</strong> <span class="tag">$0</span></td><td>Google Business Profile, Apple Business Connect, Yelp, Bing, Meta, Google Analytics</td><td>The base every US business must own. The Driver sets these up first.</td></tr>
+          <tr><td><strong>Affordable</strong> <span class="tag">$ / month</span></td><td>Hunter, BrightLocal, CallRail, Canva, ChatGPT, Zapier, Buffer</td><td>Small paid tools that punch above their price for owner-operators.</td></tr>
+          <tr><td><strong>Growth</strong> <span class="tag">$$ / month</span></td><td>Clay, Apollo, HubSpot, Birdeye, Podium, Instantly, GoHighLevel</td><td>Serious lead-gen, CRM, and reputation for growing businesses.</td></tr>
+          <tr><td><strong>Enterprise</strong> <span class="tag">$$$ custom</span></td><td>6sense, ZoomInfo, Salesforce, Demandbase, Gong</td><td>The heavy machinery big companies pay a fortune for.</td></tr>
+        </tbody>
+      </table>
+      <p class="center mt"><a class="btn btn-ghost" href="./tools-matrix.md">See all 105 tools &amp; what each one does →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Real outcomes</div><h2 class="mt">Just tell it what you want</h2></div>
+    <div class="grid g2 mt">
+      <div class="card"><h3>“Get me more calls this week”</h3><p>Optimizes your Google listing, launches local ads, tracks every call, and doubles down on what’s working.</p></div>
+      <div class="card"><h3>“Get me to the top of Google Maps”</h3><p>Fixes your listings everywhere, builds citations, and drives fresh 5-star reviews to climb the map pack.</p></div>
+      <div class="card"><h3>“Fill my sales calendar”</h3><p>Finds ideal customers, writes personal outreach, follows up, and books the meetings straight to your calendar.</p></div>
+      <div class="card"><h3>“Lower my ad costs”</h3><p>Watches your campaigns daily, kills wasted spend, and reallocates budget to your best-performing ads.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Simple pricing</div><h2 class="mt">Cheaper than one part-time hire</h2>
+    <p class="lead">Cancel anytime. Setup done for you. Your first outcome in days, not months.</p></div>
+    <div class="price mt">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="amt">$299<span>/mo</span></div>
+        <p style="color:var(--faint);font-size:13px">For solo owners &amp; local shops</p>
+        <ul>
+          <li>Local Driver (Maps, Yelp, Bing)</li>
+          <li>Reviews Driver</li>
+          <li>1 active goal at a time</li>
+          <li>You approve every action</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" style="width:100%">Choose Starter</a>
+      </div>
+      <div class="plan pop">
+        <div class="badge">MOST POPULAR</div>
+        <h3>Growth</h3>
+        <div class="amt">$899<span>/mo</span></div>
+        <p style="color:var(--faint);font-size:13px">For growing businesses</p>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Ads Driver (Google + Meta)</li>
+          <li>Sales &amp; Follow-up Drivers</li>
+          <li>3 goals at once</li>
+          <li>Priority approvals + reports</li>
+        </ul>
+        <a class="btn btn-main" href="#contact" style="width:100%">Choose Growth</a>
+      </div>
+      <div class="plan">
+        <h3>Scale</h3>
+        <div class="amt">Custom</div>
+        <p style="color:var(--faint);font-size:13px">Multi-location &amp; teams</p>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Unlimited goals &amp; drivers</li>
+          <li>Enterprise tools (6sense, ZoomInfo)</li>
+          <li>Dedicated success manager</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" style="width:100%">Talk to us</a>
+      </div>
+    </div>
+    <p class="center" style="color:var(--faint);font-size:13px;margin-top:16px">Prices shown are illustrative launch pricing — final pricing confirmed at signup.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Questions</div><h2 class="mt">Straight answers</h2></div>
+    <div class="mt">
+      <details open><summary>Do I need to be technical?</summary><p>No. You talk to it in plain English, like texting an employee. It handles the tools.</p></details>
+      <details><summary>Will it spend my money without asking?</summary><p>Never. Anything that spends money or messages a real customer waits for your one-tap approval.</p></details>
+      <details><summary>What tools do I need to buy first?</summary><p>None to start — it uses the free foundation (Google, Apple, Yelp, Bing, Meta). It only recommends paid tools when they’ll clearly pay for themselves.</p></details>
+      <details><summary>How fast do I see results?</summary><p>Listings and reviews improve in days. Ads and sales outcomes typically show within the first few weeks.</p></details>
+      <details><summary>Can I cancel anytime?</summary><p>Yes. No lock-in. You own your accounts and data.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap center">
+    <div class="eyebrow">Ready?</div>
+    <h2 class="mt">Give your business a Driver today</h2>
+    <p class="lead" style="max-width:640px;margin:6px auto 0">Tell us your #1 goal. We’ll set up your first Driver and you’ll see it work within days.</p>
+    <div class="hero-cta">
+      <a class="btn btn-main" href="mailto:hello@aonxi.com?subject=I%20want%20an%20AI%20Driver&body=My%20business%20is%3A%0AMy%20%231%20goal%20is%3A">Get started →</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="margin-bottom:8px">AI <b>Driver</b></div>
+    <p>You say the outcome. It does the work. You stay in control.</p>
+    <p style="margin-top:10px">© 2026 Aonxi · <a href="./flowchart.md" style="color:var(--muted)">Architecture</a> · <a href="./tools-matrix.md" style="color:var(--muted)">105-Tool Matrix</a></p>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad:true, securityLevel:'loose' });
+</script>
+</body>
+</html>
