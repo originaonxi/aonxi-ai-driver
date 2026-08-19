@@ -1,375 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Driver — You Say the Outcome. It Does the Work.</title>
-<meta name="description" content="AI Driver runs your ads, sales outreach, reviews and local listings for you. You approve. It works 24/7 across 105 business tools with one system." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aonxi AI Drivers — Revenue, Capital & Operations on Autopilot</title>
+<meta name="description" content="Aonxi turns business outcomes into supervised AI work. AROS builds revenue, ARIA builds investor access, and the Driver platform runs 105+ tools across sales, marketing, ads, operations and engineering.">
+<meta property="og:title" content="Aonxi AI Drivers — Make the outcome automatic">
+<meta property="og:description" content="AROS for revenue. ARIA for capital. One supervised operating layer for 105+ business tools.">
 <style>
-  :root{
-    --bg:#0a0b12; --bg2:#11131f; --card:#161927; --line:#242838;
-    --ink:#f4f6fb; --muted:#a5adc4; --faint:#6f7690;
-    --brand:#6c8cff; --brand2:#22d3a6; --gold:#ffd166; --danger:#ff6b6b;
-    --grad:linear-gradient(120deg,#6c8cff,#22d3a6);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-  .btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:0;transition:.2s}
-  .btn-main{background:var(--grad);color:#04110d}
-  .btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(34,211,166,.25)}
-  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--brand)}
-  .eyebrow{color:var(--brand2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
-  section{padding:74px 0;border-bottom:1px solid var(--line)}
-  h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
-  h1{font-size:clamp(34px,6vw,60px);font-weight:800}
-  h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:14px}
-  h3{font-size:20px;font-weight:700}
-  p.lead{font-size:clamp(17px,2.2vw,21px);color:var(--muted)}
-
-  /* nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,11,18,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto}
-  .logo{font-weight:800;font-size:18px}
-  .logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .nav-links{display:flex;gap:22px;align-items:center}
-  .nav-links a{color:var(--muted);font-size:14px}
-  .nav-links a:hover{color:var(--ink)}
-  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
-
-  /* hero */
-  .hero{padding:90px 0 80px;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(108,140,255,.18),transparent)}
-  .hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero .lead{max-width:720px;margin:20px auto 0}
-  .hero-cta{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap}
-  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;color:var(--muted)}
-
-  .grid{display:grid;gap:18px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:820px){.g3,.g2{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-  .card .num{font-size:13px;font-weight:800;color:var(--brand2)}
-  .card h3{margin:8px 0}
-  .card p{color:var(--muted);font-size:15px}
-
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
-  @media(max-width:820px){.split{grid-template-columns:1fr}}
-  .oldnew{border-radius:16px;padding:22px;border:1px solid var(--line)}
-  .old{background:rgba(255,107,107,.06)}
-  .new{background:rgba(34,211,166,.07)}
-  .oldnew h3{margin-bottom:10px}
-  .oldnew li{list-style:none;color:var(--muted);padding:6px 0 6px 26px;position:relative}
-  .old li::before{content:"✕";position:absolute;left:0;color:var(--danger)}
-  .new li::before{content:"✓";position:absolute;left:0;color:var(--brand2)}
-
-  .diagram{background:#fff;border-radius:16px;padding:18px;border:1px solid var(--line);overflow:auto}
-  .diagram .mermaid{display:flex;justify-content:center}
-  figcaption{color:var(--faint);font-size:13px;text-align:center;margin-top:10px}
-
-  table{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:12px}
-  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
-  th{background:var(--bg2);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
-  td strong{color:var(--ink)}
-  .tag{font-size:12px;color:var(--brand2)}
-
-  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:820px){.price{grid-template-columns:1fr}}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center;position:relative}
-  .plan.pop{border-color:var(--brand2);box-shadow:0 0 0 1px var(--brand2),0 20px 50px rgba(34,211,166,.14)}
-  .plan .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#04110d;font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px}
-  .plan .amt{font-size:40px;font-weight:800;margin:10px 0 2px}
-  .plan .amt span{font-size:15px;color:var(--faint);font-weight:600}
-  .plan ul{list-style:none;margin:18px 0;text-align:left}
-  .plan li{color:var(--muted);padding:7px 0 7px 24px;position:relative;font-size:14px}
-  .plan li::before{content:"✓";position:absolute;left:0;color:var(--brand2)}
-
-  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px}
-  .faq summary{cursor:pointer;font-weight:700;font-size:16px}
-  .faq p{color:var(--muted);margin-top:10px}
-
-  footer{padding:50px 0;text-align:center;color:var(--faint);font-size:14px}
-  .center{text-align:center}
-  .mt{margin-top:26px}
+:root{--ink:#102033;--ink-2:#21354d;--muted:#63738a;--paper:#f7f9fc;--white:#fff;--line:#dbe3ec;--blue:#2457e6;--blue-2:#0b378f;--teal:#0b8f83;--orange:#ed7d3a;--yellow:#f4c95d;--navy:#0c1d33;--shadow:0 18px 60px rgba(17,39,68,.11);--radius:18px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}.shell{max-width:1180px;margin:auto;padding:0 28px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.03em;font-size:20px}.brand-mark{width:29px;height:29px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:14px}.brand i{font-style:normal;color:var(--blue)}.navlinks{display:flex;gap:23px;align-items:center;font-size:13px;color:var(--muted);font-weight:650}.navlinks a:hover{color:var(--blue)}.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 17px;font-weight:800;font-size:13px;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}.nav-cta,.button.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(36,87,230,.2)}.nav-cta:hover,.button.primary:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgba(36,87,230,.28)}.button.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}.button.secondary:hover{border-color:var(--blue);color:var(--blue)}.button.dark{background:var(--navy);color:#fff}.hero{background:linear-gradient(135deg,#eef4ff 0%,#fbfcff 54%,#eaf8f4 100%);border-bottom:1px solid var(--line);padding:76px 0 64px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:64px;align-items:center}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:850;color:var(--blue);margin-bottom:18px}.hero h1{font-size:clamp(42px,5.5vw,73px);line-height:.99;letter-spacing:-.065em;margin:0 0 23px;max-width:700px}.hero h1 em{font-style:normal;color:var(--blue)}.hero-copy{font-size:19px;line-height:1.55;color:var(--muted);max-width:650px;margin:0}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.proof-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;color:var(--muted);font-size:12px;font-weight:750}.proof-row span{display:flex;align-items:center;gap:7px}.dot{width:8px;height:8px;border-radius:99px;background:var(--teal);display:inline-block}.hero-art{position:relative;min-height:390px}.orbit{position:absolute;inset:20px 0 0 20px;background:#fff;border:1px solid var(--line);border-radius:27px;box-shadow:var(--shadow);padding:24px}.orbit:before{content:"";position:absolute;inset:26px;border:1px dashed #cbd8ea;border-radius:50%}.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:154px;height:154px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;text-align:center;z-index:2;box-shadow:0 15px 35px rgba(12,29,51,.25)}.core strong{display:block;font-size:21px;letter-spacing:-.04em}.core small{display:block;color:#b8c9e0;font-size:11px;margin-top:4px}.node{position:absolute;z-index:3;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 8px 22px rgba(17,39,68,.09);font-size:12px;font-weight:800;min-width:132px}.node b{display:block;font-size:15px;margin-bottom:2px}.node small{color:var(--muted);font-weight:600}.node-a{left:3%;top:14%}.node-b{right:3%;top:14%}.node-c{left:4%;bottom:13%}.node-d{right:3%;bottom:13%}.node-a b{color:var(--blue)}.node-b b{color:var(--orange)}.node-c b{color:var(--teal)}.node-d b{color:#8767c7}.section{padding:82px 0;border-bottom:1px solid var(--line)}.section.tight{padding:55px 0}.section-head{max-width:790px;margin-bottom:35px}.section-head.center{margin-left:auto;margin-right:auto;text-align:center}.section-head h2{font-size:clamp(31px,4vw,49px);line-height:1.05;letter-spacing:-.055em;margin:0 0 15px}.section-head p{font-size:17px;color:var(--muted);margin:0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--blue);font-weight:850;margin-bottom:13px}.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.audience-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;min-height:165px}.audience-card .icon{font-size:24px;margin-bottom:14px}.audience-card h3{font-size:17px;margin:0 0 6px;letter-spacing:-.02em}.audience-card p{font-size:14px;color:var(--muted);margin:0}.dark-section{background:var(--navy);color:#fff;border-bottom:0}.dark-section .section-head p{color:#aebed2}.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.product{background:#142b48;border:1px solid #294361;border-radius:18px;padding:25px;position:relative;overflow:hidden}.product:after{content:"";width:155px;height:155px;border-radius:50%;position:absolute;right:-74px;bottom:-90px;background:rgba(255,255,255,.035)}.product .label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:#9bb7dc}.product h3{font-size:25px;letter-spacing:-.045em;margin:9px 0 7px}.product h3 span{color:#7ac6ff}.product p{color:#bfd0e5;font-size:14px;margin:0 0 17px;max-width:500px}.product .metric{font-size:12px;color:#fff;font-weight:800;background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;display:inline-block}.product.aros{border-color:#2c6ae6}.product.aros .label{color:#7fb4ff}.product.aria{border-color:#cf743e}.product.aria .label{color:#ffc09a}.product.aria h3 span{color:#ffc09a}.product-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:17px}..product-row .product{padding:19px;min-height:150px}.product-row .product h3{font-size:17px}.product-row .product p{font-size:13px}.product-row .metric{font-size:11px}.statement{margin-top:32px;padding:20px 23px;border-left:3px solid var(--yellow);background:rgba(255,255,255,.055);color:#d8e4f2;font-size:15px}.statement strong{color:#fff}.compare{display:grid;grid-template-columns:1fr 1fr;gap:17px}.compare-box{border-radius:18px;padding:26px;border:1px solid var(--line);background:#fff}.compare-box.driver{background:#eaf8f4;border-color:#9cd8c9}.compare-box h3{margin:0 0 14px;font-size:19px}.compare-box ul{padding:0;margin:0;list-style:none}.compare-box li{padding:9px 0;border-top:1px solid rgba(100,120,145,.16);font-size:14px;color:var(--muted)}.compare-box li b{color:var(--ink)}.compare-box li:before{content:"—";margin-right:9px;color:var(--orange);font-weight:900}.compare-box.driver li:before{content:"✓";color:var(--teal)}.diagram-wrap{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px;overflow:auto}.diagram-wrap .mermaid{min-width:720px;display:flex;justify-content:center}.caption{text-align:center;color:var(--muted);font-size:12px;margin:13px 0 1px}.flow-note{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:15px}.flow-note article{padding:16px;background:#fff;border:1px solid var(--line);border-radius:13px}.flow-note b{display:block;color:var(--blue);font-size:12px;margin-bottom:5px}.flow-note p{font-size:13px;color:var(--muted);margin:0}.playbooks{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.playbook{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 8px 25px rgba(17,39,68,.05)}.playbook h3{font-size:19px;margin:0 0 6px}.playbook>p{font-size:14px;color:var(--muted);margin:0 0 17px}.mini-flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:6px}.mini-flow span{background:#eef4ff;color:var(--blue-2);font-weight:750;font-size:11px;padding:8px 9px;border-radius:7px;flex:1;min-width:85px;text-align:center}.mini-flow i{font-style:normal;align-self:center;color:#9aabc0}.playbook .result{margin-top:15px;color:var(--teal);font-weight:800;font-size:12px}.catalog-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.catalog-tools input,.catalog-tools select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 13px;color:var(--ink);font:inherit;font-size:13px}.catalog-tools input{flex:1;min-width:230px}.catalog-count{font-size:13px;color:var(--muted);margin:10px 0 14px}.table-scroll{border:1px solid var(--line);border-radius:16px;overflow:auto;background:#fff;max-height:650px}.tool-table{border-collapse:collapse;width:100%;min-width:800px;font-size:13px}.tool-table th{position:sticky;top:0;background:var(--navy);color:#fff;text-align:left;padding:13px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.09em}.tool-table td{padding:12px 14px;border-bottom:1px solid #e8edf3;vertical-align:top}.tool-table tr:hover td{background:#f5f8fd}.tool-table td:first-child{color:var(--muted);font-variant-numeric:tabular-nums;width:55px}.tool-table td:nth-child(2){font-weight:800;min-width:185px}.tool-table td:nth-child(3){color:var(--blue);min-width:160px}.tool-table td:nth-child(4){color:var(--muted);min-width:350px}.tool-table mark{background:#fff0bb;color:inherit}.catalog-foot{font-size:12px;color:var(--muted);margin-top:12px}.outcome-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.outcome{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.outcome .quote{font-size:24px;color:var(--orange);font-weight:900}.outcome h3{font-size:17px;margin:3px 0 8px}.outcome p{font-size:13px;color:var(--muted);margin:0}.delivery{display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:start}.steps{display:grid;gap:11px}.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);padding:17px;border-radius:14px}.step-num{width:34px;height:34px;border-radius:10px;background:#eaf0ff;color:var(--blue);display:grid;place-items:center;font-weight:900}.step h3{font-size:16px;margin:0 0 4px}.step p{font-size:13px;color:var(--muted);margin:0}.offer{background:var(--navy);border-radius:20px;padding:28px;color:#fff;position:sticky;top:95px}.offer h3{font-size:28px;letter-spacing:-.04em;margin:0 0 9px}.offer p{color:#b7c8dc;font-size:14px}.offer ul{list-style:none;padding:0;margin:19px 0}.offer li{padding:7px 0;font-size:13px;color:#dce7f2}.offer li:before{content:"✓";color:#74d4b4;font-weight:900;margin-right:9px}.offer .button{width:100%;margin-top:7px}.footer{background:#fff;padding:42px 0;color:var(--muted);font-size:13px}.footer-grid{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer a{color:var(--blue);font-weight:750}.disclaimer{font-size:11px;color:#8392a7;margin-top:10px;max-width:850px}@media(max-width:900px){.hero-grid,.delivery{grid-template-columns:1fr}.hero-art{min-height:340px}.audience,.product-row{grid-template-columns:repeat(2,1fr)}.outcome-grid{grid-template-columns:repeat(2,1fr)}.offer{position:static}}@media(max-width:650px){.shell{padding:0 17px}.nav{height:62px}.navlinks a:not(.nav-cta){display:none}.hero{padding:55px 0 45px}.hero h1{font-size:43px}.hero-copy{font-size:17px}.hero-art{min-height:290px}.orbit{inset:10px 0 0}.core{width:112px;height:112px}.core strong{font-size:16px}.node{padding:9px;min-width:108px;font-size:10px}.node b{font-size:12px}.section{padding:58px 0}.audience,.product-grid,.product-row,.compare,.playbooks,.outcome-grid{grid-template-columns:1fr}.flow-note{grid-template-columns:1fr 1fr}.section-head h2{font-size:34px}.footer-grid{display:block}.footer-grid .actions{margin-top:18px}}
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav">
-    <div class="logo">AI <b>Driver</b></div>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#flip">The flip</a>
-      <a href="#tools">105 tools</a>
-      <a href="#pricing">Pricing</a>
-      <a class="btn btn-main" href="#pricing">Get started</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">The AI that does the work — not just the talking</div>
-    <h1 class="mt">You say the <span>outcome.</span><br/>It does the work.</h1>
-    <p class="lead">AI Driver runs your Google &amp; Facebook ads, sales outreach, reviews, and local listings for you — around the clock. You just approve the important stuff. Think of it as an employee that never sleeps and already knows 105 business tools.</p>
-    <div class="hero-cta">
-      <a class="btn btn-main" href="#pricing">Start today →</a>
-      <a class="btn btn-ghost" href="#how">See how it works</a>
-    </div>
-    <div class="chips">
-      <div class="chip">📈 More leads &amp; calls</div>
-      <div class="chip">⭐ More 5-star reviews</div>
-      <div class="chip">📍 Top of Google Maps</div>
-      <div class="chip">💸 Lower ad costs</div>
-      <div class="chip">🤖 Works 24/7</div>
-    </div>
-  </div>
-</header>
-
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="wrap center">
-    <div class="eyebrow">Sound familiar?</div>
-    <h2 class="mt">Running a business today means juggling 20 apps</h2>
-    <p class="lead" style="max-width:760px;margin:0 auto">Google Business Profile. Yelp. Facebook ads. Follow-up emails. Reviews. A CRM you barely use. It’s too much for one person — and hiring a team is expensive. <strong style="color:var(--ink)">What if one AI just… did all of it?</strong></p>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Dead simple</div><h2 class="mt">How it works — in 3 steps</h2></div>
-    <div class="grid g3 mt">
-      <div class="card"><div class="num">STEP 1</div><h3>Tell it the goal</h3><p>“Get me 20 more calls this month.” “Fill my calendar.” “Get more 5-star reviews.” Plain English. No setup headaches.</p></div>
-      <div class="card"><div class="num">STEP 2</div><h3>It does the work</h3><p>The AI picks the right tools, writes the messages, runs the ads, updates your listings, and follows up — automatically, all day.</p></div>
-      <div class="card"><div class="num">STEP 3</div><h3>You just approve</h3><p>Anything that spends money or messages a real customer waits for your one-tap “yes.” You stay in control; the AI does the grind.</p></div>
-    </div>
-    <figure class="diagram mt">
-      <div class="mermaid">
-%%{init:{'look':'handDrawn','theme':'neutral'}}%%
+<header class="topbar"><nav class="nav shell"><a class="brand" href="#top"><span class="brand-mark">A</span><span>Aonxi <i>AI Drivers</i></span></a><div class="navlinks"><a href="#who">Who it helps</a><a href="#drivers">AROS + ARIA</a><a href="#flows">How it works</a><a href="#catalog">105 tools</a><a class="nav-cta" href="#pilot">Request a pilot</a></div></nav></header>
+<main id="top">
+<section class="hero"><div class="shell hero-grid"><div><div class="kicker">The outcome operating system</div><h1>Put revenue, capital and operations <em>on autopilot.</em></h1><p class="hero-copy">Aonxi gives your business AI Drivers that use the right tools, in the right order, until the outcome moves. <strong>AROS</strong> builds revenue. <strong>ARIA</strong> builds investor access. Your people approve the moments that matter; the system handles the work between them.</p><div class="actions"><a class="button primary" href="#pilot">Turn on a Driver <span style="margin-left:8px">→</span></a><a class="button secondary" href="#drivers">See what we sell</a></div><div class="proof-row"><span><i class="dot"></i>105-tool operating catalog</span><span><i class="dot"></i>Human approval at risk</span><span><i class="dot"></i>Evidence + cost trail</span></div></div><div class="hero-art" aria-label="Aonxi product family diagram"><div class="orbit"></div><div class="core"><div><strong>AI Driver</strong><small>outcome → work → proof</small></div></div><div class="node node-a"><b>AROS</b><small>revenue / pipeline</small></div><div class="node node-b"><b>ARIA</b><small>capital / investors</small></div><div class="node node-c"><b>Ads + Local</b><small>calls / customers</small></div><div class="node node-d"><b>Engineer</b><small>ship / operate</small></div></div></div></section>
+<section class="section tight" id="who"><div class="shell"><div class="section-head center"><div class="eyebrow">Who this is for</div><h2>Not another dashboard. A team that needs work finished.</h2><p>Choose the result you need. Aonxi turns it into an operating motion for the people who own that result.</p></div><div class="audience"><article class="audience-card"><div class="icon">🏪</div><h3>Local business owners</h3><p>Restaurants, clinics, law firms, contractors, gyms and franchises that need more calls, reviews and map visibility without hiring a full marketing team.</p></article><article class="audience-card"><div class="icon">🚀</div><h3>Founders & B2B sales teams</h3><p>Teams that need qualified meetings and predictable pipeline from research, intent signals, enrichment, personalized outreach and follow-up.</p></article><article class="audience-card"><div class="icon">💼</div><h3>Founders raising capital</h3><p>Startups that need the right investors, stronger thesis fit, verified contact paths and a consistent path to investor meetings.</p></article><article class="audience-card"><div class="icon">📣</div><h3>Marketing teams & agencies</h3><p>Operators who want one system to create campaigns, run Google and Meta ads, track spend, publish content and report the KPI.</p></article><article class="audience-card"><div class="icon">🧑‍💻</div><h3>Engineering & product teams</h3><p>Leaders who want an AI Engineer Driver to turn a desired feature into research, code, tests, review and a shipped result.</p></article><article class="audience-card"><div class="icon">🎓</div><h3>AI operators in training</h3><p>People learning to run revenue, marketing, voice, data and operations systems by shipping measurable outcomes—not memorizing app menus.</p></article></div></div></section>
+<section class="section dark-section" id="drivers"><div class="shell"><div class="section-head"><div class="eyebrow" style="color:#80b9ff">The products</div><h2>The same brain. Different Drivers for different outcomes.</h2><p>Each Driver is a domain specialist: a goal, a set of skills, the right tool adapters, a KPI, and a human approval rail.</p></div><div class="product-grid"><article class="product aros"><div class="label">Revenue Driver · sellable product</div><h3>AROS — <span>Autonomous Revenue Operating System</span></h3><p>For founders and sales teams. AROS finds accounts, researches them, scores fit, enriches contacts, writes relevant outreach, manages sequences and routes qualified replies toward meetings and pipeline.</p><span class="metric">KPI: qualified pipeline → closed-won</span></article><article class="product aria"><div class="label">Capital Driver · sellable product</div><h3>ARIA — <span>Autonomous Relationship Intelligence Agent</span></h3><p>For founders raising and teams doing investor relations. ARIA finds investors, scores thesis fit, verifies deliverability and personalizes outreach so capital conversations start with relevance.</p><span class="metric">KPI: investor conversations → meetings</span></article></div><div class="product-row"><article class="product"><div class="label">Acquisition Driver</div><h3>Google + Meta Ads</h3><p>Creates, launches, measures and improves paid acquisition.</p><span class="metric">CPA · ROAS · leads</span></article><article class="product"><div class="label">Local Growth Driver</div><h3>Maps + Reviews</h3><p>Repairs listings, earns reviews and grows local demand.</p><span class="metric">calls · rank · rating</span></article><article class="product"><div class="label">Engineering Driver</div><h3>Ship the work</h3><p>Researches, codes, tests, reviews and delivers features.</p><span class="metric">green PRs · releases</span></article><article class="product"><div class="label">Operator Driver</div><h3>Ops + Forecasting</h3><p>Connects data, runs workflows and explains what happens next.</p><span class="metric">accuracy · speed · margin</span></article></div><div class="statement"><strong>Delivery model:</strong> trained engineers, sales operators and marketers configure the skills, guardrails and success metrics; the Drivers run the repeatable work across the tool stack. The goal is not to make people learn 105 dashboards. The goal is to make the best operating method repeatable.</div></div></section>
+<section class="section" id="difference"><div class="shell"><div class="section-head center"><div class="eyebrow">The product difference</div><h2>AI does the driving. People keep the judgment.</h2><p>Traditional copilots wait for a human to click through a task. Aonxi starts with the outcome and keeps working until the KPI is met or a person needs to decide.</p></div><div class="compare"><article class="compare-box"><h3>Traditional co-pilot</h3><ul><li><b>Input:</b> “Draft this email.”</li><li><b>Human:</b> researches, chooses tools, executes, checks and follows up.</li><li><b>AI:</b> suggests a next step inside one app.</li><li><b>Result:</b> more software; the work still sits with the operator.</li></ul></article><article class="compare-box driver"><h3>Aonxi AI Driver</h3><ul><li><b>Input:</b> “Book 10 qualified meetings this month.”</li><li><b>AI:</b> plans, researches, enriches, writes, sends, monitors and iterates.</li><li><b>Human:</b> approves spend, sensitive outreach and exceptions.</li><li><b>Result:</b> an outcome, a KPI report, evidence and a cost trail.</li></ul></article></div></div></section>
+<section class="section" id="flows"><div class="shell"><div class="section-head center"><div class="eyebrow">The full operating flow</div><h2>From a plain-English goal to measurable work</h2><p>This is the architecture in human language: the Driver decides what has to happen, calls the right tools, checks the result and learns from the outcome.</p></div><div class="diagram-wrap"><div class="mermaid">%%{init:{'theme':'base','themeVariables':{'primaryColor':'#eaf0ff','primaryTextColor':'#102033','primaryBorderColor':'#2457e6','lineColor':'#63738a','fontFamily':'Inter'}}}%%
 flowchart LR
-  A["🎯 You say the goal<br/>(more calls, more reviews)"] --> B{{"🤖 AI Driver<br/>does the work"}}
-  B --> C["🧑 You approve<br/>the important stuff"]
-  C --> B
-  B --> D["✅ Result delivered<br/>+ simple report"]
-      </div>
-      <figcaption>You set the destination. The AI drives. You’re the co-pilot.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- THE FLIP -->
-<section id="flip">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">The big idea</div><h2 class="mt">Everyone else gives you a “co-pilot.” We give you a Driver.</h2>
-    <p class="lead" style="max-width:720px;margin:6px auto 0">A co-pilot still makes <em>you</em> do all the work. A Driver does the work and lets <em>you</em> supervise. That’s the flip.</p></div>
-    <div class="split mt">
-      <div class="oldnew old">
-        <h3>❌ Normal AI tools</h3>
-        <ul>
-          <li>You still write every message</li>
-          <li>You still run every ad</li>
-          <li>You learn 20 dashboards</li>
-          <li>AI only “suggests” — you do it</li>
-        </ul>
-      </div>
-      <div class="oldnew new">
-        <h3>✅ AI Driver</h3>
-        <ul>
-          <li>It writes and sends for you</li>
-          <li>It runs and optimizes the ads</li>
-          <li>It knows all the tools already</li>
-          <li>You just approve — it does it</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT IT CAN DO -->
-<section id="drivers">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">One system, many jobs</div><h2 class="mt">Point it at any goal</h2></div>
-    <div class="grid g3 mt">
-      <div class="card"><h3>📈 Ads Driver</h3><p>Runs Google &amp; Facebook ads, tests creatives, and cuts wasted spend so your cost per lead drops.</p></div>
-      <div class="card"><h3>📍 Local Driver</h3><p>Owns your Google Maps, Apple Maps, Yelp &amp; Bing listings and pushes you up the local rankings.</p></div>
-      <div class="card"><h3>⭐ Reviews Driver</h3><p>Asks happy customers for reviews, replies to all of them, and protects your reputation.</p></div>
-      <div class="card"><h3>📬 Sales Driver</h3><p>Finds the right prospects, writes personal outreach, follows up, and books meetings for you.</p></div>
-      <div class="card"><h3>📞 Follow-up Driver</h3><p>Texts and emails new leads in seconds so you never lose a customer to slow response.</p></div>
-      <div class="card"><h3>📊 Forecast Driver</h3><p>Turns your numbers into plain-English forecasts so you know what next month looks like.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ARCHITECTURE (layman) -->
-<section id="architecture">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Under the hood — in plain English</div><h2 class="mt">How the AI actually gets it done</h2>
-    <p class="lead" style="max-width:720px;margin:6px auto 0">You don’t need to understand this to use it. But here’s the honest picture: the AI thinks, does, checks its own work, and asks you before anything risky.</p></div>
-    <figure class="diagram mt">
-      <div class="mermaid">
-%%{init:{'look':'handDrawn','theme':'neutral'}}%%
-flowchart TD
-  S(["🎯 Your goal"]) --> P["1. Make a plan"]
-  P --> A["2. Do the work<br/>(ads, emails, listings…)"]
-  A --> V["3. Check: did it help?"]
-  V --> G{"Risky? Spends money?<br/>Messages a customer?"}
-  G -- "yes" --> H["🧑 Ask you to approve"]
-  H --> A
-  G -- "no" --> K["Keep going"]
-  K --> M["4. Measure &amp; report"]
-  M --> L{"Goal reached?"}
-  L -- "not yet" --> P
-  L -- "yes" --> DONE(["✅ Done — with proof"])
-      </div>
-      <figcaption>Plan → Do → Check → Approve → Repeat. It never stops until the goal is met.</figcaption>
-    </figure>
-    <p class="center mt"><a class="btn btn-ghost" href="./flowchart.md">See the full architecture (for the techies) →</a></p>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section id="tools">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">The unfair advantage</div><h2 class="mt">One Driver. 105 business tools. Zero learning curve.</h2>
-    <p class="lead" style="max-width:760px;margin:6px auto 0">Instead of you buying and learning tools, the AI already knows them — from free tools every business needs, to the expensive platforms the big players use. It picks the right one for your goal and budget.</p></div>
-
-    <figure class="diagram mt">
-      <div class="mermaid">
-%%{init:{'look':'handDrawn','theme':'neutral'}}%%
+  O["🎯 Outcome<br/>more meetings / calls / capital"] --> I["1. Intake<br/>KPI · budget · deadline · guardrails"]
+  I --> P["2. Plan<br/>turn the outcome into steps"]
+  P --> R["3. Route<br/>pick the best model + skill"]
+  R --> X["4. Execute<br/>use the connected tools"]
+  X --> V["5. Verify<br/>did the KPI move?"]
+  V --> Q{"Risky,<br/>expensive or sensitive?"}
+  Q -- yes --> H["🧑 Human co-pilot<br/>approve · steer · reject"]
+  Q -- no --> C["Commit the action"]
+  H --> C
+  C --> L["6. Log<br/>evidence + cost + result"]
+  L --> M["7. Learn<br/>improve the next run"]
+  M --> D{"Goal met?"}
+  D -- no --> P
+  D -- yes --> W["✅ Outcome delivered"]</div><div class="caption">The human is not removed. The human is moved to the decisions where judgment matters.</div></div><div class="flow-note"><article><b>INTAKE</b><p>“I need 10 investor meetings.” The Driver turns this into a KPI and guardrails.</p></article><article><b>EXECUTE</b><p>AROS or ARIA calls research, enrichment, writing, sequencing and CRM tools.</p></article><article><b>GOVERN</b><p>Spend, sensitive messages and low-confidence actions pause for approval.</p></article><article><b>LEARN</b><p>Every result becomes evidence the next campaign can use.</p></article></div></div></section>
+<section class="section" id="layers"><div class="shell"><div class="section-head center"><div class="eyebrow">The complete system map</div><h2>One shared brain. Six Drivers. One governed execution loop.</h2><p>This is the full architecture behind the simple promise: the customer states an outcome, the runtime plans the work, specialists connect tools, and the human co-pilot governs risk.</p></div><div class="diagram-wrap"><div class="mermaid">%%{init:{'theme':'base','themeVariables':{'primaryColor':'#eaf0ff','primaryTextColor':'#102033','primaryBorderColor':'#2457e6','lineColor':'#63738a','fontFamily':'Inter'}}}%%
 flowchart TB
-  D{{"🤖 AI Driver Orchestrator"}}
-  D --> L["📍 Local<br/>Google · Apple · Yelp · Bing"]
-  D --> A["📈 Ads<br/>Google · Meta · TikTok"]
-  D --> S["📬 Sales<br/>Clay · Apollo · 6sense"]
-  D --> R["⭐ Reviews<br/>Birdeye · Podium"]
-  D --> V["🎙️ Voice<br/>ElevenLabs · Fish Audio"]
-  D --> F["📊 Reports<br/>Sheets · Looker · AI"]
-      </div>
-      <figcaption>You don’t choose the tool. The Driver does — then reports back one number: did it work?</figcaption>
-    </figure>
-
-    <div class="mt">
-      <table>
-        <thead><tr><th>Price band</th><th>Examples</th><th>What it’s for</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Free foundation</strong> <span class="tag">$0</span></td><td>Google Business Profile, Apple Business Connect, Yelp, Bing, Meta, Google Analytics</td><td>The base every US business must own. The Driver sets these up first.</td></tr>
-          <tr><td><strong>Affordable</strong> <span class="tag">$ / month</span></td><td>Hunter, BrightLocal, CallRail, Canva, ChatGPT, Zapier, Buffer</td><td>Small paid tools that punch above their price for owner-operators.</td></tr>
-          <tr><td><strong>Growth</strong> <span class="tag">$$ / month</span></td><td>Clay, Apollo, HubSpot, Birdeye, Podium, Instantly, GoHighLevel</td><td>Serious lead-gen, CRM, and reputation for growing businesses.</td></tr>
-          <tr><td><strong>Enterprise</strong> <span class="tag">$$$ custom</span></td><td>6sense, ZoomInfo, Salesforce, Demandbase, Gong</td><td>The heavy machinery big companies pay a fortune for.</td></tr>
-        </tbody>
-      </table>
-      <p class="center mt"><a class="btn btn-ghost" href="./tools-matrix.md">See all 105 tools &amp; what each one does →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- OUTCOMES -->
-<section id="outcomes">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Real outcomes</div><h2 class="mt">Just tell it what you want</h2></div>
-    <div class="grid g2 mt">
-      <div class="card"><h3>“Get me more calls this week”</h3><p>Optimizes your Google listing, launches local ads, tracks every call, and doubles down on what’s working.</p></div>
-      <div class="card"><h3>“Get me to the top of Google Maps”</h3><p>Fixes your listings everywhere, builds citations, and drives fresh 5-star reviews to climb the map pack.</p></div>
-      <div class="card"><h3>“Fill my sales calendar”</h3><p>Finds ideal customers, writes personal outreach, follows up, and books the meetings straight to your calendar.</p></div>
-      <div class="card"><h3>“Lower my ad costs”</h3><p>Watches your campaigns daily, kills wasted spend, and reallocates budget to your best-performing ads.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Simple pricing</div><h2 class="mt">Cheaper than one part-time hire</h2>
-    <p class="lead">Cancel anytime. Setup done for you. Your first outcome in days, not months.</p></div>
-    <div class="price mt">
-      <div class="plan">
-        <h3>Starter</h3>
-        <div class="amt">$299<span>/mo</span></div>
-        <p style="color:var(--faint);font-size:13px">For solo owners &amp; local shops</p>
-        <ul>
-          <li>Local Driver (Maps, Yelp, Bing)</li>
-          <li>Reviews Driver</li>
-          <li>1 active goal at a time</li>
-          <li>You approve every action</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact" style="width:100%">Choose Starter</a>
-      </div>
-      <div class="plan pop">
-        <div class="badge">MOST POPULAR</div>
-        <h3>Growth</h3>
-        <div class="amt">$899<span>/mo</span></div>
-        <p style="color:var(--faint);font-size:13px">For growing businesses</p>
-        <ul>
-          <li>Everything in Starter</li>
-          <li>Ads Driver (Google + Meta)</li>
-          <li>Sales &amp; Follow-up Drivers</li>
-          <li>3 goals at once</li>
-          <li>Priority approvals + reports</li>
-        </ul>
-        <a class="btn btn-main" href="#contact" style="width:100%">Choose Growth</a>
-      </div>
-      <div class="plan">
-        <h3>Scale</h3>
-        <div class="amt">Custom</div>
-        <p style="color:var(--faint);font-size:13px">Multi-location &amp; teams</p>
-        <ul>
-          <li>Everything in Growth</li>
-          <li>Unlimited goals &amp; drivers</li>
-          <li>Enterprise tools (6sense, ZoomInfo)</li>
-          <li>Dedicated success manager</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact" style="width:100%">Talk to us</a>
-      </div>
-    </div>
-    <p class="center" style="color:var(--faint);font-size:13px;margin-top:16px">Prices shown are illustrative launch pricing — final pricing confirmed at signup.</p>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="faq">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Questions</div><h2 class="mt">Straight answers</h2></div>
-    <div class="mt">
-      <details open><summary>Do I need to be technical?</summary><p>No. You talk to it in plain English, like texting an employee. It handles the tools.</p></details>
-      <details><summary>Will it spend my money without asking?</summary><p>Never. Anything that spends money or messages a real customer waits for your one-tap approval.</p></details>
-      <details><summary>What tools do I need to buy first?</summary><p>None to start — it uses the free foundation (Google, Apple, Yelp, Bing, Meta). It only recommends paid tools when they’ll clearly pay for themselves.</p></details>
-      <details><summary>How fast do I see results?</summary><p>Listings and reviews improve in days. Ads and sales outcomes typically show within the first few weeks.</p></details>
-      <details><summary>Can I cancel anytime?</summary><p>Yes. No lock-in. You own your accounts and data.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="contact">
-  <div class="wrap center">
-    <div class="eyebrow">Ready?</div>
-    <h2 class="mt">Give your business a Driver today</h2>
-    <p class="lead" style="max-width:640px;margin:6px auto 0">Tell us your #1 goal. We’ll set up your first Driver and you’ll see it work within days.</p>
-    <div class="hero-cta">
-      <a class="btn btn-main" href="mailto:hello@aonxi.com?subject=I%20want%20an%20AI%20Driver&body=My%20business%20is%3A%0AMy%20%231%20goal%20is%3A">Get started →</a>
-      <a class="btn btn-ghost" href="#how">See how it works</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="logo" style="margin-bottom:8px">AI <b>Driver</b></div>
-    <p>You say the outcome. It does the work. You stay in control.</p>
-    <p style="margin-top:10px">© 2026 Aonxi · <a href="./flowchart.md" style="color:var(--muted)">Architecture</a> · <a href="./tools-matrix.md" style="color:var(--muted)">105-Tool Matrix</a></p>
-  </div>
-</footer>
-
+  O["🎯 Outcome intake<br/>KPI · budget · deadline · guardrails"] --> CORE{{"🧠 AI Driver Runtime<br/>plan · route · execute · re-plan"}}
+  SK["📚 Skills registry<br/>sales · marketing · engineering · ops"] --> CORE
+  CORE --> ROUTE["🔀 Model router<br/>fast · reason · write · code"]
+  ROUTE --> OR["Model layer<br/>OpenRouter policy for customer work"]
+  CORE --> DRIVERS
+  subgraph DRIVERS["Domain Drivers"]
+    AROS["AROS<br/>Revenue / pipeline"]
+    ARIA["ARIA<br/>Capital / investors"]
+    ADS["Ads Driver<br/>CPA / ROAS"]
+    LOCAL["Local Growth<br/>calls / reviews / maps"]
+    ENG["AI Engineer<br/>shipped / green PRs"]
+    OPS["Ops + Forecast<br/>speed / accuracy / margin"]
+  end
+  DRIVERS --> TOOLS["🔌 Tool adapters<br/>CRM · ads · email · LinkedIn · maps · data · code"]
+  TOOLS --> VERIFY["📏 Verify the KPI<br/>result · confidence · evidence"]
+  VERIFY --> GATE{"Risk or approval needed?"}
+  GATE -- yes --> HUMAN["🧑 Human co-pilot<br/>approve · steer · handle exception"]
+  GATE -- no --> COMMIT["Commit the action"]
+  HUMAN --> COMMIT
+  COMMIT --> LEDGER["📒 Economic ledger<br/>cost + evidence per task"]
+  LEDGER --> MEMORY["🧬 Shared memory<br/>what worked becomes policy"]
+  MEMORY --> CORE
+</div><div class="caption">The full map: intake → shared runtime → domain Driver → tool adapters → verification → human governance → evidence → learning.</div></div><div class="flow-note"><article><b>THE BRAIN</b><p>The runtime is reused. AROS and ARIA are domain products, not disconnected chatbots.</p></article><article><b>THE SKILLS</b><p>Operators encode the best sales, marketing, engineering and operations methods as reusable skills.</p></article><article><b>THE TOOLS</b><p>The Driver chooses from the complete 105-tool catalog instead of forcing customers to learn it.</p></article><article><b>THE CONTROL</b><p>Safe actions run automatically; risky actions pause for a human and leave evidence.</p></article></div></div></section>
+<section class="section" id="playbooks"><div class="shell"><div class="section-head"><div class="eyebrow">What you can buy</div><h2>Sell the outcome, not a bag of software.</h2><p>These are the first packaged motions Aonxi can deploy. The 105-tool catalog below is the operating inventory behind them.</p></div><div class="playbooks"><article class="playbook"><h3>AROS: B2B pipeline engine</h3><p>For a founder or sales leader who wants qualified meetings without adding SDR headcount.</p><div class="mini-flow"><span>ICP</span><i>→</i><span>intent</span><i>→</i><span>enrich</span><i>→</i><span>personalize</span><i>→</i><span>sequence</span><i>→</i><span>meetings</span></div><div class="result">Sells: pipeline, meetings and sales capacity.</div></article><article class="playbook"><h3>ARIA: investor access engine</h3><p>For a founder who needs high-fit conversations instead of a generic investor spreadsheet.</p><div class="mini-flow"><span>thesis</span><i>→</i><span>source</span><i>→</i><span>fit score</span><i>→</i><span>verify</span><i>→</i><span>tailor</span><i>→</i><span>meetings</span></div><div class="result">Sells: focused investor outreach and relationship intelligence.</div></article><article class="playbook"><h3>Local demand engine</h3><p>For a local operator who needs more calls, map visibility and proof from happy customers.</p><div class="mini-flow"><span>repair listings</span><i>→</i><span>reviews</span><i>→</i><span>local ads</span><i>→</i><span>track calls</span><i>→</i><span>improve</span></div><div class="result">Sells: local visibility, reputation and booked demand.</div></article><article class="playbook"><h3>Ads performance engine</h3><p>For a marketer who wants creative and budget decisions tied to real leads, not vanity metrics.</p><div class="mini-flow"><span>offer</span><i>→</i><span>creative</span><i>→</i><span>launch</span><i>→</i><span>attribute</span><i>→</i><span>optimize</span></div><div class="result">Sells: lower CPA, better ROAS and less wasted spend.</div></article></div></div></section>
+<section class="section" id="catalog"><div class="shell"><div class="section-head"><div class="eyebrow">The operating inventory</div><h2>All 105 tools, explained by the job they do.</h2><p>Our engineers, sales operators and marketers train the Driver on all 105 tools, then package that expertise into skills, adapters, guardrails and playbooks. Search the complete matrix below by tool, category or outcome.</p></div><div class="catalog-tools"><label class="sr-only" for="toolSearch">Search tools or outcomes</label><input id="toolSearch" type="search" placeholder="Search tools or outcomes…" aria-label="Search tools or outcomes"><label class="sr-only" for="toolBand">Filter the tool catalog</label><select id="toolBand" aria-label="Filter the tool catalog"><option value="all">All 105 tools</option><option value="enterprise">Enterprise / custom</option><option value="mid">Mid-market paid</option><option value="local">Local growth + reputation</option><option value="ai">AI + voice + creative</option><option value="free">Free foundation</option></select></div><div class="catalog-count" id="catalogCount" aria-live="polite" aria-busy="true">Loading the complete catalog… <a href="./tools-matrix.md" style="color:var(--blue);font-weight:750">Open the full 105-tool matrix</a>.</div><div class="table-scroll"><table class="tool-table"><thead><tr><th scope="col">#</th><th scope="col">Tool</th><th scope="col">Category</th><th scope="col">What the Driver uses it for</th></tr></thead><tbody id="toolRows"></tbody></table></div><p class="catalog-foot">Catalog source: <a href="./tools-matrix.md" style="color:var(--blue);font-weight:750">tools-matrix.md</a>. Price bands are strategic ranges, not vendor quotes; final procurement depends on seats, usage, contacts, locations and ad spend.</p></div></section>
+<section class="section" id="outcomes"><div class="shell"><div class="section-head center"><div class="eyebrow">The language customers use</div><h2>Start with the sentence they already say.</h2></div><div class="outcome-grid"><article class="outcome"><div class="quote">“</div><h3>I need more calls.</h3><p>Local Growth Driver combines listings, reviews, Google/Meta acquisition and call attribution.</p></article><article class="outcome"><div class="quote">“</div><h3>I need B2B meetings.</h3><p>AROS combines intent, enrichment, research, personalization, sequences and CRM routing.</p></article><article class="outcome"><div class="quote">“</div><h3>I need investor access.</h3><p>ARIA combines thesis-fit discovery, deliverability checks and tailored relationship outreach.</p></article><article class="outcome"><div class="quote">“</div><h3>I need the team to move faster.</h3><p>Engineering and Operator Drivers turn repeatable work into supervised, measurable systems.</p></article></div></div></section>
+<section class="section" id="delivery"><div class="shell"><div class="section-head"><div class="eyebrow">How deployment works</div><h2>People set the standard. Drivers run the motion.</h2><p>The strongest product is not a chatbot. It is the combination of trained operators, a shared tool language and an execution loop that improves with evidence.</p></div><div class="delivery"><div class="steps"><article class="step"><div class="step-num">01</div><div><h3>Choose one business outcome</h3><p>We define the target KPI, deadline, budget, audience and what the Driver is never allowed to do.</p></div></article><article class="step"><div class="step-num">02</div><div><h3>Map the right skills and tools</h3><p>Sales, marketing and engineering operators choose the playbook, connect accounts and set the approval gates.</p></div></article><article class="step"><div class="step-num">03</div><div><h3>Run the first supervised motion</h3><p>The Driver researches, acts, verifies and shows the human exactly where approval is needed.</p></div></article><article class="step"><div class="step-num">04</div><div><h3>Scale what produces evidence</h3><p>Winning steps become reusable skills. Weak steps are changed. Every run leaves a result and cost trail.</p></div></article></div><aside class="offer" id="pilot"><div class="eyebrow" style="color:#80b9ff">Pilot offer</div><h3>Put one Driver to work.</h3><p>Start with the outcome that is most expensive for your team to do manually.</p><ul><li>AROS revenue / pipeline motion</li><li>ARIA investor outreach motion</li><li>Local calls + reviews motion</li><li>Google + Meta ads motion</li><li>Engineering or operations motion</li></ul><a class="button primary" href="mailto:hello@aonxi.com?subject=Aonxi%20AI%20Driver%20pilot&body=Business%20type%3A%0AOutcome%20I%20need%3A%0ACurrent%20tools%3A%0ADeadline%3A">Book a pilot →</a><a class="button secondary" style="width:100%;margin-top:10px" href="https://github.com/originaonxi/aonxi-ai-driver">Inspect the architecture</a></aside></div></div></section>
+</main>
+<footer class="footer"><div class="shell footer-grid"><div><div class="brand"><span class="brand-mark">A</span><span>Aonxi <i>AI Drivers</i></span></div><div class="disclaimer">Aonxi AI Drivers is an operating concept and product architecture. Tool availability, pricing and API permissions vary by vendor and account. A Driver uses connected tools according to configured permissions and human approval rules.</div></div><div class="actions"><a href="./flowchart.md">Full architecture</a><a href="./tools-matrix.md">Full tool matrix</a><a href="https://github.com/originaonxi/aonxi-ai-driver">GitHub</a></div></div></footer>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad:true, securityLevel:'loose' });
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true,securityLevel:'loose'});
+const esc=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+const clean=(v)=>v.replace(/\*\*/g,'').replace(/<br\s*\/?>/gi,' ');
+const bandFor=(n)=>n<=20?'enterprise':n<=40?'mid':n<=65?'local':n<=85?'ai':'free';
+let allTools=[];
+function renderTools(){const query=document.querySelector('#toolSearch').value.trim().toLowerCase();const band=document.querySelector('#toolBand').value;const matches=allTools.filter(t=>(band==='all'||t.band===band)&&(!query||t.text.includes(query)));document.querySelector('#catalogCount').textContent=`Showing ${matches.length} of ${allTools.length} tools · each row names the job the Driver can use it for.`;document.querySelector('#catalogCount').setAttribute('aria-busy','false');document.querySelector('#toolRows').innerHTML=matches.map(t=>`<tr><td>${t.n}</td><td>${esc(t.tool)}</td><td>${esc(t.cat)}</td><td>${esc(t.outcome)}</td></tr>`).join('')||'<tr><td colspan="4">No tools match that search. Try “reviews”, “CRM”, “ads” or “pipeline”.</td></tr>'}
+async function loadTools(){try{const md=await fetch('./tools-matrix.md').then(r=>r.text());const rows=md.split(/\r?\n/).filter(line=>/^\|\s*\d+\s*\|/.test(line));allTools=rows.map(line=>{const cells=line.split('|').slice(1,-1).map(x=>clean(x.trim()));const n=Number(cells[0]);return{n,tool:cells[1],cat:cells[2],outcome:cells[3],band:bandFor(n),text:cells.join(' ').toLowerCase()}});renderTools()}catch(e){document.querySelector('#catalogCount').innerHTML='The interactive catalog is unavailable in this view. <a href="./tools-matrix.md" style="color:var(--blue);font-weight:750">Open the complete 105-tool matrix →</a>';document.querySelector('#catalogCount').setAttribute('aria-busy','false');document.querySelector('#toolRows').innerHTML='<tr><td colspan="4"><a href="./tools-matrix.md" style="color:#2457e6;font-weight:800">Open the complete 105-tool matrix →</a></td></tr>'}}
+document.querySelector('#toolSearch').addEventListener('input',renderTools);document.querySelector('#toolBand').addEventListener('change',renderTools);loadTools();
 </script>
 </body>
 </html>
