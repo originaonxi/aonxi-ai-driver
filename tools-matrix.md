@@ -1,6 +1,6 @@
-# AI Driver Orchestrator — 145 Business Tools Matrix
+# AI Driver Orchestrator — 153 Business Tools Matrix
 
-> **Purpose:** One orchestration system that can drive outcomes for USA business owners across local presence, Google/Meta ads, AI SDR, enrichment, CRM, reputation, voice, content, hiring and team building, landing pages, in-house AI software engineering, finance, operations, and forecasting.
+> **Purpose:** One orchestration system that can drive outcomes for USA business owners across local presence, Google/Meta ads, AI SDR, enrichment, CRM, reputation, voice, content, hiring and team building, landing pages, in-house AI software engineering, AI engine optimization (AIEO), finance, operations, and forecasting.
 >
 > **Important pricing note:** this is a strategic price-band map, not a procurement quote. Enterprise SaaS pricing changes often, many vendors require custom quotes, and usage-based tools can become expensive depending on seats, credits, ad spend, locations, contacts, and API calls. Verify exact pricing before purchase.
 
@@ -274,7 +274,26 @@ flowchart TB
 
 ---
 
-## 11. Outcome Playbooks — What the Orchestrator Does
+## 11. Band H — AIEO / Answer-Engine Optimization (Get Cited by AI, not SEO)
+
+> Buyers now ask ChatGPT, Perplexity, Gemini and Google AI Overviews instead of scrolling Google links. AIEO gets your brand **recommended and cited inside AI answers** — a different game from classic SEO.
+
+| # | Tool | Category | Outcome it can drive |
+|---:|---|---|---|
+| 146 | **Profound** | AI answer-engine optimization | Track and improve how ChatGPT, Perplexity, Gemini and AI Overviews mention your brand |
+| 147 | **Otterly.ai** | AI search monitoring | Monitor brand mentions and citations across ChatGPT, Perplexity and Google AI Overviews |
+| 148 | **Peec AI** | GEO analytics | Track AI-search visibility and share of answer versus competitors |
+| 149 | **Scrunch AI** | AI visibility | Optimize brand presence and content so AI engines cite you |
+| 150 | **Elmo** | GEO platform | AI-search visibility tracking and optimization workflows |
+| 151 | **Athena HQ** | Answer-engine optimization | Measure and grow brand citations inside generative engines |
+| 152 | **Goodie AI** | GEO | Improve how AI assistants recommend your brand |
+| 153 | **Writesonic GEO** | Content for AI search | Create and structure content designed to be cited by AI engines |
+
+**Best for:** any brand that wants to be the answer AI assistants recommend — B2B, local, ecommerce, and Series A companies competing on trust.
+
+---
+
+## 12. Outcome Playbooks — What the Orchestrator Does
 
 ### Playbook A — Local Business Dominance
 
@@ -337,7 +356,7 @@ flowchart TB
 
 ---
 
-## 12. How the Orchestrator Chooses Tools
+## 13. How the Orchestrator Chooses Tools
 
 | If the customer says... | The Orchestrator chooses... | KPI |
 |---|---|---|
@@ -352,7 +371,7 @@ flowchart TB
 
 ---
 
-## 13. Tool Buying Strategy
+## 14. Tool Buying Strategy
 
 1. **Start free:** GBP, Apple Business Connect, Bing Places, Yelp, Meta, GA4, Search Console, Looker Studio.
 2. **Add local growth tools:** BrightLocal/Whitespark for audits, CallRail for attribution, Birdeye/Podium when reviews become a bottleneck.
@@ -362,7 +381,7 @@ flowchart TB
 
 ---
 
-## 14. Evidence Sources
+## 15. Evidence Sources
 
 Use these to verify categories, current vendor positioning, and live pricing before procurement:
 
@@ -391,6 +410,6 @@ Use these to verify categories, current vendor positioning, and live pricing bef
 
 ---
 
-## 15. Final Architecture Sentence
+## 16. Final Architecture Sentence
 
 **The product is not another tool. The product is the Driver that knows which tool to use, when to use it, how much to spend, what outcome to measure, and when to ask the human for approval.**
