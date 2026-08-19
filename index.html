@@ -101,6 +101,50 @@
 </div>
 </section>
 
+
+<section class="section section-alt" id="architecture" aria-labelledby="arch-title">
+<div class="container">
+<div class="section-head"><p class="kicker">Full architecture</p><h2 id="arch-title">The complete system map — inline and explained</h2><p>One shared brain. Four flagship Drivers. Supporting Drivers for ads, local, hiring, web, engineering, ops. Human approval at risk. Evidence ledger on every action.</p></div>
+<div class="table-wrap" style="max-width:100%;overflow:auto">
+<div class="mermaid" style="min-width:1200px">%%{init:{'theme':'base','themeVariables':{'primaryColor':'#0f131a','primaryTextColor':'#f0f3f8','primaryBorderColor':'#00d4aa','lineColor':'#6b7587','fontFamily':'Inter'}}}%%
+flowchart TB
+  O["🎯 Outcome Intake<br/>KPI · Budget · Deadline · Guardrails"] --> CORE{{"🧠 AI Driver Runtime<br/>Plan · Route · Execute · Re-plan"}}
+  SK["📚 Skills Registry<br/>GTM · Capital · AIEO · Hiring · Engineering · Ads · Local · Ops"] --> CORE
+  CORE --> ROUTE["🔀 Model Router"] --> OR["Model Layer<br/>OpenRouter · Unlimited for Customer Work"]
+  CORE --> DRIVERS
+  subgraph DRIVERS["Flagship Drivers"]
+    AROS["AROS<br/>Revenue / Pipeline"]
+    ARIA["ARIA<br/>Capital / Investors"]
+    AIEO["AIEO<br/>AI Citations"]
+    HIR["Talent<br/>Hiring / Team"]
+  end
+  subgraph SUPPORT["Supporting Drivers"]
+    ADS["Ads Driver<br/>CPA / ROAS"]
+    LOC["Local Growth<br/>Maps / Reviews / Calls"]
+    WEB["Web Driver<br/>Landing Pages"]
+    ENG["Engineering Driver<br/>Build Custom Tools"]
+    OPS["Ops + Forecast<br/>Speed / Accuracy / Margin"]
+  end
+  DRIVERS --> TOOLS["🔌 153 Tool Adapters<br/>CRM · Ads · Maps · Email · LinkedIn · ATS · Web · Code · Data · AI Search"]
+  SUPPORT --> TOOLS
+  TOOLS --> VERIFY["📏 Verify KPI<br/>Result · Confidence · Evidence"]
+  VERIFY --> GATE{"Risk or Approval<br/>Needed?"}
+  GATE -- yes --> HUMAN["🧑 Human Co-Pilot<br/>Approve · Steer · Exception"]
+  GATE -- no --> COMMIT["Commit Action"]
+  HUMAN --> COMMIT
+  COMMIT --> LEDGER["📒 Economic Ledger<br/>Cost + Evidence per Task"]
+  LEDGER --> MEMORY["🧬 Shared Memory<br/>What Worked Becomes Policy"]
+  MEMORY --> CORE
+</div>
+</div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<article class="card"><div class="icon" style="background:var(--brand-weak)">🧠</div><h4>The Brain</h4><p>Runtime is reused. AROS, ARIA, AIEO, Talent are Drivers — not disconnected chatbots.</p></article>
+<article class="card"><div class="icon" style="background:var(--accent-weak)">📚</div><h4>The Skills</h4><p>Top operators encode the best GTM, capital, hiring, engineering methods as reusable skills.</p></article>
+<article class="card"><div class="icon" style="background:var(--gold-weak)">🔌</div><h4>The Tools</h4><p>Driver chooses from 153+ tools — and builds new ones — instead of making you learn them.</p></article>
+<article class="card"><div class="icon" style="background:var(--brand-weak)">🛡️</div><h4>The Control</h4><p>Safe actions run automatically; risky actions pause for human and leave evidence.</p></article>
+</div>
+</div>
+</section>
 <section class="section section-alt" id="vs" aria-labelledby="vs-title">
 <div class="container">
 <div class="section-head"><p class="kicker">Why Aonxi</p><h2 id="vs-title">Not another tool. Not a co-pilot. An outcome engine.</h2></div>
@@ -140,7 +184,7 @@
 <div class="section-head"><p class="kicker">Pricing that aligns</p><h2 id="pricing-title">Pay for the outcome. Not the software.</h2><p>No per-seat fees. No platform lock-in. You pay when the Driver delivers — qualified meetings, investor intros, AI citations, or custom outcomes.</p></div>
 <div class="grid g3">
 <article class="pricing-card"><div class="pricing-head"><div class="pricing-name">AROS — Revenue</div><div class="pricing-price">$500<span>/qualified meeting</span></div><p class="pricing-desc">End-to-end outbound: intent → enrichment → personalization → sequence → routing</p></div><ul class="pricing-features"><li>Clay, Apollo, 6sense, ZoomInfo enrichment</li><li>Instantly, Smartlead, Outreach sequencing</li><li>HubSpot/Salesforce routing + CRM sync</li><li>Gong/Clari conversation intelligence</li><li>Weekly outcome report + cost ledger</li><li>Human approval on every send</li></ul><a class="btn btn-primary pricing-cta" href="#contact">Start AROS pilot</a></article>
-<article class="pricing-card featured"><div class="pricing-badge">Most popular</div><div class="pricing-head"><div class="pricing-name">ARIA — Capital</div><div class="pricing-price">$750<span>/investor meeting</span></div><p class="pricing-desc">Thesis-fit sourcing, deliverability verification, personalized outreach, CRM tracking</p></div><ul class="pricing-features"><li>Profound, Otterly investor mapping</li><li>Apollo, LinkedIn verified contacts</li><li>Custom research agents per fund</li><li>Thesis-fit scoring + outreach tailoring</li><li>Meeting booked → you take the call</li><li>Human approval on every outreach</li></ul><a class="btn btn-primary pricing-cta" href="#contact">Start ARIA pilot</a></article>
+<article class="pricing-card featured"><div class="pricing-badge">Most popular</div><div class="pricing-head"><div class="pricing-name">ARIA — Capital</div><div class="pricing-price">$750<span>/investor meeting</span></div><p class="pricing-desc">Thesis-fit sourcing, deliverability verification, personalized outreach, CRM tracking</p></div><ul class="pricing-features"><li>Apollo, LinkedIn Sales Navigator, Crunchbase — investor sourcing</li><li>Apollo, LinkedIn verified contacts</li><li>Custom research agents per fund</li><li>Thesis-fit scoring + outreach tailoring</li><li>Meeting booked → you take the call</li><li>Human approval on every outreach</li></ul><a class="btn btn-primary pricing-cta" href="#contact">Start ARIA pilot</a></article>
 <article class="pricing-card"><div class="pricing-head"><div class="pricing-name">AIEO — AI Citations</div><div class="pricing-price">$2,500<span>/month</span></div><p class="pricing-desc">Continuous AI answer-surface optimization: audits, schema, comparison pages, monitoring</p></div><ul class="pricing-features"><li>Profound, Otterly, Peec AI, Scrunch monitoring</li><li>Entity/schema gap analysis + fixes</li><li>Comparison-page generation at scale</li><li>Weekly citation share reporting</li><li>Competitor citation tracking</li><li>Human review on published content</li></ul><a class="btn btn-primary pricing-cta" href="#contact">Start AIEO pilot</a></article>
 </div>
 <div style="text-align:center;margin-top:32px"><p class="disclaimer"><strong>Supporting Drivers included at no extra cost:</strong> Ads, Local, Hiring, Landing Pages, Engineering, Ops — all run on the same platform. Custom tool builds scoped per project.</p><a class="btn btn-secondary" href="#contact">Need a custom outcome? Talk to us →</a></div>
@@ -152,7 +196,7 @@
 <div class="section-head"><p class="kicker">Our proof</p><h2 id="aonxi-title">What Aonxi has shipped</h2><p class="disclaimer">Internal builds and client outcomes from the Aonxi team — the same operators who train your Drivers.</p></div>
 <div class="grid g3">
 <article class="case-study"><span class="case-tag">AROS · Autonomous</span><h3>Autonomous revenue agent</h3><p class="problem">Needs: score prospects, research, write, send — unattended, with per-task cost ledger.</p><p class="solution">AROS scores prospects, researches via Clay/Apollo, writes personalized sequences, manages Instantly/Smartlead infrastructure, routes replies to HubSpot — $30K/mo running unattended.</p><div class="result">Impact: 10× pipeline throughput · close rate 10%→34% · cycle 20→5 days</div></article>
-<article class="case-study"><span class="case-tag">ARIA · Capital</span><h3>Capital-side twin of AROS</h3><p class="problem">Needs: find investors, score thesis fit, verify deliverability before sending.</p><p class="solution">ARIA sources investors by thesis, verifies emails/domains via Profound/Otterly, tailors outreach per fund thesis, books intro meetings — all with human approval gates.</p><div class="result">Impact: focused investor outreach · relationship intelligence · no wasted sends</div></article>
+<article class="case-study"><span class="case-tag">ARIA · Capital</span><h3>Capital-side twin of AROS</h3><p class="problem">Needs: find investors, score thesis fit, verify deliverability before sending.</p><p class="solution">ARIA sources investors by thesis, verifies emails/domains via Apollo/LinkedIn deliverability checks, tailors outreach per fund thesis, books intro meetings — all with human approval gates.</p><div class="result">Impact: focused investor outreach · relationship intelligence · no wasted sends</div></article>
 <article class="case-study"><span class="case-tag">Engineering · Build</span><h3>In-house AI tool builds</h3><p class="problem">Needs: own the stack instead of renting AI SDR/AE vendors at $8K–$15K/mo.</p><p class="solution">Engineering Driver builds custom agents: AI SDR (LangGraph + Cursor + Supabase), AI AE (demo automation + objection handling), internal workflow agents — shipped in weeks, not quarters.</p><div class="result">Impact: tool cost down ~70% · full IP ownership · ships in 3–6 weeks</div></article>
 </div>
 </div>
