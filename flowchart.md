@@ -7,7 +7,7 @@
 > **Mermaid** with the **hand-drawn (Excalidraw-style)** look. It renders on GitHub as-is,
 > and can be exported to a real Excalidraw canvas (see [§9](#9-render--export-to-excalidraw)).
 
-> **Companion matrix:** [`tools-matrix.md`](./tools-matrix.md) maps **105 business tools** by price band, category, and outcome, then shows how the Orchestrator chooses tools for local business, AI SDR, Meta/Google ads, reputation, voice, finance, ops, and forecasting.
+> **Companion matrix:** [`tools-matrix.md`](./tools-matrix.md) maps **145 business tools** by price band, category, and outcome, then shows how the Orchestrator chooses tools for local business, AI SDR, Meta/Google ads, reputation, voice, finance, ops, and forecasting.
 
 ---
 

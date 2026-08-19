@@ -1,6 +1,6 @@
-# AI Driver Orchestrator — 100+ Business Tools Matrix
+# AI Driver Orchestrator — 145 Business Tools Matrix
 
-> **Purpose:** One orchestration system that can drive outcomes for USA business owners across local presence, Google/Meta ads, AI SDR, enrichment, CRM, reputation, voice, content, finance, operations, and forecasting.
+> **Purpose:** One orchestration system that can drive outcomes for USA business owners across local presence, Google/Meta ads, AI SDR, enrichment, CRM, reputation, voice, content, hiring and team building, landing pages, in-house AI software engineering, finance, operations, and forecasting.
 >
 > **Important pricing note:** this is a strategic price-band map, not a procurement quote. Enterprise SaaS pricing changes often, many vendors require custom quotes, and usage-based tools can become expensive depending on seats, credits, ad spend, locations, contacts, and API calls. Verify exact pricing before purchase.
 
@@ -205,7 +205,76 @@ flowchart TB
 
 ---
 
-## 8. Outcome Playbooks — What the Orchestrator Does
+## 8. Band E — Hiring, Recruiting & Team Building
+
+| # | Tool | Category | Outcome it can drive |
+|---:|---|---|---|
+| 106 | **LinkedIn Recruiter** | Talent sourcing | Search and reach active + passive candidates, InMail, build talent pipelines |
+| 107 | **Gem** | Recruiting CRM | Source, nurture, and track candidates; recruiting analytics and outreach sequences |
+| 108 | **SeekOut** | Talent intelligence | Technical + diverse sourcing, market mapping, hard-to-find engineering talent |
+| 109 | **hireEZ** | Outbound recruiting | AI candidate sourcing and engagement at scale across the web |
+| 110 | **Greenhouse** | ATS | Structured hiring, interview kits, scorecards, reduce bad hires |
+| 111 | **Ashby** | ATS + analytics | All-in-one recruiting, scheduling, and real hiring metrics |
+| 112 | **Lever** | ATS + CRM | Candidate relationship management and pipeline nurture |
+| 113 | **Workable** | ATS | Post jobs, screen, and manage SMB/startup hiring |
+| 114 | **BambooHR** | HRIS | Onboarding, records, PTO, small-company HR operations |
+| 115 | **Rippling** | HR / IT / payroll | Hire, onboard, provision apps/devices, run global payroll |
+| 116 | **Deel** | Global hiring / EOR | Compliantly hire contractors and employees worldwide |
+| 117 | **Metaview** | Interview intelligence | AI interview notes, scorecards, structured hiring signal |
+| 118 | **Karat** | Technical interviewing | Structured, outsourced engineering interviews at scale |
+| 119 | **Checkr** | Background checks | Compliant candidate screening before hire |
+| 120 | **Otta / Welcome** | Talent marketplace | Reach startup-oriented and tech candidates |
+
+**Best for:** startups scaling teams, building AI SDR/AE and engineering orgs, agencies hiring pods, any company that needs to hire faster.
+
+---
+
+## 9. Band F — Landing Pages, Websites & Conversion
+
+| # | Tool | Category | Outcome it can drive |
+|---:|---|---|---|
+| 121 | **Webflow** | Website builder | Design and ship marketing sites and landing pages without code |
+| 122 | **Framer** | Site builder | Fast AI-assisted landing pages and full sites |
+| 123 | **Unbounce** | Landing pages | Build/test high-converting campaign pages with smart traffic routing |
+| 124 | **Instapage** | Landing pages | Ad-specific pages, personalization, and A/B testing |
+| 125 | **Leadpages** | Landing pages | SMB lead-gen pages, pop-ups, and alert bars |
+| 126 | **Carrd** | Simple pages | One-page sites and quick campaign launches |
+| 127 | **WordPress + Elementor** | CMS | Flexible sites, blogs, and funnels |
+| 128 | **Vercel** | Hosting / deploy | Ship fast custom web apps and pages globally |
+
+**Best for:** turning ad and outreach traffic into booked demos, leads, and signups.
+
+---
+
+## 10. Band G — In-House AI Software Engineering (Build Any Tool)
+
+> This is the "software engineer AI team" layer: build any tool a Series A company can imagine — AI SDR, AI AE, custom agents, internal apps — instead of renting every vendor forever.
+
+| # | Tool | Category | Outcome it can drive |
+|---:|---|---|---|
+| 129 | **Cursor** | AI code editor | Build features fast with AI pair-programming |
+| 130 | **GitHub Copilot** | AI coding | In-editor completion, chat, and PR assistance |
+| 131 | **Claude Code** | AI coding agent | Terminal agent that edits, tests, and ships code |
+| 132 | **OpenAI Codex** | AI coding agent | Autonomous coding tasks and pull requests |
+| 133 | **v0** | AI UI generation | Generate production React/UI from prompts |
+| 134 | **Replit** | Cloud IDE / agent | Build, host, and collaborate with an AI agent |
+| 135 | **Bolt.new** | AI app builder | Prompt-to-app full-stack prototyping |
+| 136 | **Lovable** | AI app builder | Ship full-stack apps from natural language |
+| 137 | **LangChain** | LLM framework | Build LLM apps with chains and tool use |
+| 138 | **LangGraph** | Agent orchestration | Stateful, multi-step agent workflows (AI SDR → AI AE) |
+| 139 | **CrewAI** | Multi-agent | Coordinate role-based agent teams |
+| 140 | **LlamaIndex** | RAG framework | Data connectors and retrieval for AI features |
+| 141 | **Pinecone** | Vector database | Semantic search and memory for AI features |
+| 142 | **Supabase** | Backend / DB | Postgres, auth, storage, and edge functions |
+| 143 | **Modal** | Serverless compute | Run, train, and deploy AI workloads and GPUs |
+| 144 | **Hugging Face** | Models / hosting | Open models, datasets, and inference endpoints |
+| 145 | **n8n + custom APIs** | Integration layer | Wire any custom tool into the Driver stack |
+
+**Best for:** Series A+ companies that want to own their AI SDR/AE and internal tooling instead of paying per-seat forever.
+
+---
+
+## 11. Outcome Playbooks — What the Orchestrator Does
 
 ### Playbook A — Local Business Dominance
 
@@ -268,7 +337,7 @@ flowchart TB
 
 ---
 
-## 9. How the Orchestrator Chooses Tools
+## 12. How the Orchestrator Chooses Tools
 
 | If the customer says... | The Orchestrator chooses... | KPI |
 |---|---|---|
@@ -283,7 +352,7 @@ flowchart TB
 
 ---
 
-## 10. Tool Buying Strategy
+## 13. Tool Buying Strategy
 
 1. **Start free:** GBP, Apple Business Connect, Bing Places, Yelp, Meta, GA4, Search Console, Looker Studio.
 2. **Add local growth tools:** BrightLocal/Whitespark for audits, CallRail for attribution, Birdeye/Podium when reviews become a bottleneck.
@@ -293,7 +362,7 @@ flowchart TB
 
 ---
 
-## 11. Evidence Sources
+## 14. Evidence Sources
 
 Use these to verify categories, current vendor positioning, and live pricing before procurement:
 
@@ -322,6 +391,6 @@ Use these to verify categories, current vendor positioning, and live pricing bef
 
 ---
 
-## 12. Final Architecture Sentence
+## 15. Final Architecture Sentence
 
 **The product is not another tool. The product is the Driver that knows which tool to use, when to use it, how much to spend, what outcome to measure, and when to ask the human for approval.**
